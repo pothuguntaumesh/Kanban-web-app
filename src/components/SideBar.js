@@ -4,7 +4,7 @@ import darkTheme from '../assets/icon-dark-theme.svg'
 import lightTheme from '../assets/icon-light-theme.svg'
 
 const SideBar = () => {
-    const [sideBarVisiblity,setSideBarVisibiliy]=useState(false);
+    const [sideBarVisiblity,setSideBarVisibiliy]=useState(true);
     console.log(sideBarVisiblity)
     const hideSideBarHandler=()=>{
         setSideBarVisibiliy(prevState=>!prevState)
