@@ -2,11 +2,11 @@ import React from 'react'
 import SideBar from './SideBar'
 import Board from './Board'
 
-const ContentSection = () => {
+const ContentSection = (props) => {
   return (
-    <div className=' flex h-board'>
-      <SideBar/>
-      <Board/>
+    <div className='flex h-board '>
+      <SideBar   showCreateBoardModalHandler={props.showCreateBoardModalHandler}/>
+      <Board hideShowTaskModal={props.hideShowTaskModal} showEditBoardModalHandler={props.showEditBoardModalHandler} showTaskDetails={props.showTaskDetails}/>
     </div>
   )
 }

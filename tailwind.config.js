@@ -4,8 +4,12 @@ module.exports = {
   theme: {
     minWidth: {
       '1/6': '16.7%',
-      'side':'17.5rem'
+      'side':'17.5rem',
+      '14':'14rem'
       
+    },
+    minHeight:{
+      '10':'10rem'
     },
     maxWidth:{
       'sidebar':'17.5rem'

@@ -19,7 +19,7 @@
     @apply text-blue-600 underline;
   }
   p{
-    @apply text-sm
+    @apply text-xs
   }
   html{
     font-family: 'Plus Jakarta Sans', sans-serif;
