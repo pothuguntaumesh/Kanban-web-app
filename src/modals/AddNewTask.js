@@ -15,7 +15,6 @@ const AddNewTaskModal=(props)=>{
     const statusValues=useSelector(state=>Object.keys(state[currentBoard]))
     const dispatch=useDispatch()
     const [newSubtasks,setNewSubTasks]=useState([{title:"",isCompleted:false,id:Math.random()}])
-    ///Todo What if we don't have anything in status values, this could be possible for a new board.
     const [currentDropDownValue,setCurrentDropDownValue]=useState(statusValues[0])
     
     console.log(newSubtasks,"New subtasks on the top")
@@ -54,28 +53,28 @@ const AddNewTaskModal=(props)=>{
         props.hideAddNewTaskModal()
     }
     return (
-        <div className=' absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 min-h-3/5 bg-white w-96 text-light-black rounded-md z-20'>
+        <div className='dark:bg-dark-brown absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 min-h-3/5 bg-white w-96 text-light-black rounded-md z-20'>
             <div className='container flex flex-col w-board mx-auto'>
-                <h2 className='text-lg mt-6'>Add New Task</h2>
+                <h2 className='dark:text-white text-lg mt-6'>Add New Task</h2>
                 <div className='flex flex-col mt-4'>
-                    <p className='text-dark-gray'>Title</p>
-                    <input onChange={titleChangeHandler} placeholder='e.g. Finish Kanban App' className='placeholder:text-xs mt-1 border border-light-gray rounded-md h-10 text-sm px-2'/>
+                    <p className='dark:text-white text-dark-gray'>Title</p>
+                    <input onChange={titleChangeHandler} placeholder='e.g. Finish Kanban App' className='dark:bg-dark-brown dark:border-light-brown dark:text-light-gray placeholder:text-xs mt-1 border border-light-gray rounded-md h-10 text-sm px-2'/>
                 </div>
                 <div className='flex flex-col mt-4'>
-                    <p className='text-dark-gray'>Description</p>
-                    <textarea onChange={descriptionChangeHandler} placeholder='e.g. Add New Column Modal Next' className='placeholder:text-xs min-h-10 mt-1 border border-light-gray rounded-md  text-sm px-2 py-2'/>
+                    <p className='dark:text-white text-dark-gray'>Description</p>
+                    <textarea onChange={descriptionChangeHandler} placeholder='e.g. Add New Column Modal Next' className=' dark:bg-dark-brown dark:border-light-brown dark:text-light-gray placeholder:text-xs min-h-10 mt-1 border border-light-gray rounded-md  text-sm px-2 py-2'/>
                 </div>
                 <div className='flex flex-col mt-4'>
-                    <p className='text-dark-gray'>Subtasks</p>
+                    <p className='dark:text-white text-dark-gray'>Subtasks</p>
                     <div className='container'>
                         {newSubtasks.map(subTask => {
-                            return <Subtask removeSubTask={removeSubTask} subTaskChangeHandler={subTaskChangeHandler} key={subTask.id} subTask={subTask.title} index={subTask.id}/>})}
-                        <div onClick={addNewSubTaskHandler} className='text-dark-violet text-sm bg-light-gray mt-2 py-2 rounded-full text-center'>+ Add New Task</div>
+                            return <Subtask removeSubTask={removeSubTask} subTaskChangeHandler={subTaskChangeHandler} key={subTask.id} subTask={subTask.title} id={subTask.id}/>})}
+                        <div onClick={addNewSubTaskHandler} className='dark:bg-white text-dark-violet text-sm bg-light-gray mt-2 py-2 rounded-full text-center'>+ Add New Task</div>
                     </div>
                 </div>
                 <div className='mt-4'>
-                    <p>Status</p>
-                    <select  onChange={dropDownHandler} className='px-2 h-10 w-full text-sm text-light-black mt-2 border border-light-gray rounded-md'>
+                    <p className='dark:text-white'>Status</p>
+                    <select  onChange={dropDownHandler} className='dark:bg-dark-brown dark:border-light-brown dark:text-light-gray px-2 h-10 w-full text-sm text-light-black mt-2 border border-light-gray rounded-md'>
                         {statusValues.map(statusValue=><option value={statusValue}>{statusValue}</option>)}
                     </select>
                 </div>

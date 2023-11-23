@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js}"],
+  darkMode:'class',
   theme: {
     minWidth: {
       '1/6': '16.7%',
@@ -21,7 +22,7 @@ module.exports = {
         'dark-black':"#000112",
         'light-black':"#20212C",
         'dark-brown':"#2B2C37",
-        'ligh-brown':"#3E3F4E",
+        'light-brown':"#3E3F4E",
         'dark-gray':"#828FA3",
         'light-gray':"#E4EBFA",
         'light-white':"#F4F7FD",

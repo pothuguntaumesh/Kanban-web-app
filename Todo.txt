@@ -1,3 +1,0 @@
-//Make the button an UI element and try to reuse this component.
-
-//Change the colors of svgs in side bar to white when selected

@@ -8,27 +8,26 @@ const Backdrop=(props)=>{
 }
 
 const ShowDeleteModal = (props) => {
-    // console.log("Inside show Delete Modal")
-    // console.log(props.title,props.desc,props.type)
     const board=useSelector(state=>state.currentBoard);
     const state=useSelector(state=>state)
     const dispatch=useDispatch()
     const modalDeleteHandler=()=>{
-
-        // console.log("Clicked on delete button")
-        console.log(props.taskDetails,"modalDeleteHandler")
+        if(props.info.type==="DELETE_TASK"){
         dispatch(boardActions.deleteTask({...props.taskDetails}))
-        console.log(state[board][props.taskDetails.curStatusColumn][props.taskDetails.taskIndex])
+        }
+        else if(props.info.type==="DELETE_BOARD"){
+            dispatch(boardActions.deleteBoard())
+        }
         props.hideDeleteModalHandler()
     }
     const modalHideHandler=()=>{
         props.hideDeleteModalHandler()
     }
   return (
-    <div className=' absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 min-h-3/5 bg-white w-96 text-light-black rounded-md z-20'>
+    <div className='dark:bg-dark-brown absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 min-h-3/5 bg-white w-96 text-light-black rounded-md z-20'>
             <div className='container flex flex-col w-board mx-auto'>
-                <h3 className='text-dark-red text-lg mt-6 mb-4'>{props.title} </h3>
-                <p className='text-xs text-dark-gray'>{props.desc}</p>
+                <h3 className='text-dark-red text-lg mt-6 mb-4'>{props.info.title} </h3>
+                <p className='text-xs text-dark-gray'>{props.info.desc}</p>
                 <div className='flex gap-4 mb-8 mt-4'>
                     <div onClick={modalDeleteHandler} className='bg-dark-red cursor-pointer rounded-full px-16 py-3'><p className='text-white'>Delete</p></div>
                     <div onClick={modalHideHandler} className='bg-light-gray cursor-pointer rounded-full px-16 py-3'><p className='text-dark-violet'>Cancel</p></div>
@@ -38,11 +37,10 @@ const ShowDeleteModal = (props) => {
   )
 }
 const DeleteModal=(props)=>{
-    console.log(props.title,"inside delete modal")
     return (
         <>
         {ReactDOM.createPortal(<Backdrop  hideDeleteModalHandler={props.hideDeleteModalHandler}/>,document.getElementById('backdrop'))}
-        {ReactDOM.createPortal(<ShowDeleteModal taskDetails={props.taskDetails} hideDeleteModalHandler={props.hideDeleteModalHandler} title={props.title} desc={props.desc} type={props.type}/>,document.getElementById('overlay'))}
+        {ReactDOM.createPortal(<ShowDeleteModal info={props.info} taskDetails={props.taskDetails} hideDeleteModalHandler={props.hideDeleteModalHandler} title={props.title} desc={props.desc} type={props.type}/>,document.getElementById('overlay'))}
         </>
     )
 }
