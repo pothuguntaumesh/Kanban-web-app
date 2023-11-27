@@ -4,7 +4,6 @@ import ContentSection from "./components/ContentSection";
 import NavBar from "./components/NavBar";
 
 import AddNewTask from "./modals/AddNewTask";
-import { Backdrop } from "./modals/AddNewTask";
 import ShowTask from "./modals/ShowTask";
 import EditTask from "./modals/EditTask";
 import CreateBoard from "./modals/CreateBoard";
@@ -13,8 +12,10 @@ import EditBoard from "./modals/EditBoard";
 import { useDispatch, useSelector } from "react-redux";
 import { boardActions } from "./store";
 import NullBoard from "./components/NullBoard";
+import { inject } from "@vercel/analytics";
 
 function App() {
+  inject();
   // console.log("app running")
   const [theme,setTheme]=useState('dark')
   const dispatch=useDispatch();
@@ -103,7 +104,6 @@ function App() {
       {showCreateNewBoardModal && <CreateBoard hideCreateBoardModalHandler={hideCreateBoardModalHandler}/>}
       {showDeleteModal && <DeleteModal info={deleteModalInfo} taskDetails={deleteModalInfo.taskDetails} title={deleteModalInfo.title} desc={deleteModalInfo.desc} type={deleteModalInfo.type} hideDeleteModalHandler={hideDeleteModalHandler}/>}
       {showEditBoard && <EditBoard hideEditBoardModalHandler={hideEditBoardModalHandler}/>}
-
     </div>
   );
 }
